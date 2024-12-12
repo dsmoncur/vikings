@@ -1,0 +1,41 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8; /* Light blue background */
+    color: #4F2683;
+}
+header {
+    text-align: center;
+    padding: 0px;
+    font-size: xx-large;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+}
+.content {
+    margin: 0px;
+    text-align: center;
+    list-style-position: inside;
+}
+.anchor-link {
+    display: block;
+    margin: 20px 0;
+    text-align: center;
+}
+.intro {
+    margin: 0px;
+    text-align: center;
+    list-style-position: inside;
+    margin-right: 1in;
+    margin-left: 1in;
+    border: FFC62F;
+    border-style:solid;
+    padding: 5px;
+    border-width: 3px;
+}
+html {
+    scroll-behavior: smooth;
+  }

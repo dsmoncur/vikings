@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vikings Snake Game</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+  <style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Bangers', sans-serif;
+  }
+
+  body {
+    background: #4b0082; /* Vikings purple */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row; /* Change to row to display the game and instructions side by side */
+  }
+
+  #game-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  canvas {
+    border: 5px solid gold; /* Vikings gold border */
+    box-shadow: 0 0 15px 5px rgba(255, 215, 0, 0.7); /* Gold shadow */
+    margin-left: 20px; /* Add margin to the left */
+  }
+
+  h1 {
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+  }
+
+  #logo {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 350px; /* adjust logo size */
+  }
+
+  /* Rules section styling */
+  #rules {
+    color: white;
+    font-size: 24px;
+    text-align: left;
+    margin-top: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    width: 300px;
+  }
+
+  #rules h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    padding-right: 600px;
+  }
+
+  #rules ul {
+    list-style-type: none;
+    padding-left: 0px;
+  }
+
+  #rules li {
+    margin: 10px 0;
+    font-family: 'Bangers', sans-serif;
+  }
+
+  </style>
+</head>
+<body>
+
+<!-- Game Container -->
+<div id="game-container">
+  <!-- Vikings Logo -->
+  <!-- <img id="logo" src="assets/img/vikingslogo.jpg" alt="Vikings Logo"> -->
+
+  <!-- Instructions on the left -->
+  <div id="rules">
+    <h2>Game Rules</h2>
+    <ul>
+      <li>Use the arrow keys to control the snake.</li>
+      <li>Eat the red apples to grow the snake.</li>
+      <li>Avoid colliding with yourself or the walls.</li>
+      <li>Each apple gives you one extra unit of length.</li>
+      <li>Try to achieve the highest score possible!</li>
+    </ul>
+  </div>
+
+  <!-- Game Canvas -->
+  <canvas width="400" height="400" id="game"></canvas>
+</div>
+
+<script>
+var canvas = document.getElementById('game');
+var context = canvas.getContext('2d');
+
+// Load the logo image
+var logoImage = new Image();
+logoImage.src = 'assets/img/vikingslogo.jpg'; // path to your logo image
+
+var grid = 16;
+var count = 0;
+  
+var snake = {
+  x: 160,
+  y: 160,
+  dx: grid,
+  dy: 0,
+  cells: [],
+  maxCells: 4
+};
+
+var apple = {
+  x: 320,
+  y: 320
+};
+
+// get random whole numbers in a specific range
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+// game loop
+function loop() {
+  requestAnimationFrame(loop);
+
+  if (++count < 4) {
+    return;
+  }
+
+  count = 0;
+
+  // Draw the background with small logos
+  drawBackground();
+
+  snake.x += snake.dx;
+  snake.y += snake.dy;
+
+  // Check for wall collision
+  if (snake.x < 0 || snake.x >= canvas.width || snake.y < 0 || snake.y >= canvas.height) {
+    resetGame();
+  }
+
+  snake.cells.unshift({x: snake.x, y: snake.y});
+
+  if (snake.cells.length > snake.maxCells) {
+    snake.cells.pop();
+  }
+
+  context.fillStyle = 'red';
+  context.fillRect(apple.x, apple.y, grid-1, grid-1);
+
+  context.fillStyle = 'black'; /* Snake color changed to black */
+  snake.cells.forEach(function(cell, index) {
+    // Draw the snake as black with same size for all segments
+    context.fillRect(cell.x, cell.y, grid-1, grid-1);
+
+    // Draw the logo in front of the snake's head
+    if (index === 0) {
+      var logoX = cell.x + snake.dx; // position the logo in front of the head based on direction
+      var logoY = cell.y + snake.dy;
+      // Draw the logo slightly ahead of the snake's head
+      context.drawImage(logoImage, logoX + 2, logoY + 2, grid - 4, grid - 4); // Adjust size of the logo
+    }
+
+    if (cell.x === apple.x && cell.y === apple.y) {
+      snake.maxCells++;
+      apple.x = getRandomInt(0, 25) * grid;
+      apple.y = getRandomInt(0, 25) * grid;
+    }
+
+    for (var i = index + 1; i < snake.cells.length; i++) {
+      if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
+        resetGame();
+      }
+    }
+  });
+}
+
+// Function to draw the background with small logos
+function drawBackground() {
+  var logoSize = grid; // Size of the logo to match grid
+  for (var x = 0; x < canvas.width; x += logoSize) {
+    for (var y = 0; y < canvas.height; y += logoSize) {
+      context.drawImage(logoImage, x, y, logoSize, logoSize); // Draw the logo at each grid position
+    }
+  }
+}
+
+// Function to reset the game
+function resetGame() {
+  snake.x = 160;
+  snake.y = 160;
+  snake.cells = [];
+  snake.maxCells = 4;
+  snake.dx = grid;
+  snake.dy = 0;
+
+  apple.x = getRandomInt(0, 25) * grid;
+  apple.y = getRandomInt(0, 25) * grid;
+}
+
+// listen to keyboard events to move the snake
+document.addEventListener('keydown', function(e) {
+  if (e.which === 37 && snake.dx === 0) {
+    snake.dx = -grid;
+    snake.dy = 0;
+  }
+  else if (e.which === 38 && snake.dy === 0) {
+    snake.dy = -grid;
+    snake.dx = 0;
+  }
+  else if (e.which === 39 && snake.dx === 0) {
+    snake.dx = grid;
+    snake.dy = 0;
+  }
+  else if (e.which === 40 && snake.dy === 0) {
+    snake.dy = grid;
+    snake.dx = 0;
+  }
+});
+
+// start the game
+requestAnimationFrame(loop);
+</script>
+
+</body>
+</html>

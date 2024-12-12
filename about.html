@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Minnesota Vikings</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background: #4a2b84;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .hall-of-fame, .video-section {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .hall-of-fame ul {
+            list-style-type: none; /* Removes the bullet points */
+            padding-left: 0; /* Removes any left padding */
+        }
+
+        .hall-of-fame li {
+            margin-bottom: 15px;
+        }
+
+        .hall-of-fame strong {
+            font-size: 1.1rem;
+            color: #4a2b84;
+        }
+
+        .hall-of-fame .player-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .hall-of-fame .player-info img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .video-section h2 {
+            text-align: center;
+            color: #4a2b84;
+            margin-bottom: 15px;
+        }
+
+        iframe {
+            display: block;
+            margin: 0 auto;
+            border: 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Centering Back to Top Link */
+        .content {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4a2b84;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #3c1e6c;
+        }
+        .collapse {
+        display: flex;
+        justify-content: center;  /* Centers the navbar */
+        align-items: center;      /* Vertically aligns the navbar items */
+        width: 100%;
+    }
+
+    .navbar-nav {
+        display: flex;
+        justify-content: space-evenly; /* Evenly spaces the items */
+        width: 100%; /* Ensures the items spread across the full width */
+    }
+
+    .nav-item {
+        margin: 0 15px; /* Adds spacing between each item */
+    }
+
+    .nav-link {
+        text-decoration: none;
+        color: #ffffff;  /* Adjust text color */
+        font-weight: bold;
+        padding: 10px 20px;
+    }
+
+    .nav-link:hover {
+        color: #4a2b84;  /* Adds hover effect */
+    }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>The Minnesota Vikings</h1>
+    </header>
+
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto py-4 py-lg-0">
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="game.html">Game</a></li>
+        </ul>
+    </div>
+    </div>
+    <!-- Content Section -->
+    <div class="content">
+        <p>
+            The Minnesota Vikings are a professional football team based in Minneapolis, Minnesota,
+            founded in 1960 as an expansion team in the NFL. The Vikings were established to compete
+            in the league's Western Division, with their first season in 1961. Known for their strong defense and iconic purple uniforms,
+            the Vikings have appeared in four Super Bowls but have yet to win one. 
+            The team’s passionate fanbase and historic performances make them a prominent figure in NFL history.
+        </p>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="container">
+        <!-- Hall of Fame Vikings -->
+        <div class="hall-of-fame">
+            <h2>Hall of Fame Vikings</h2>
+            <ul>
+                <li>
+                    <div class="player-info">
+                        <img src="assets/img/frantark.jpg" alt="Fran Tarkenton">
+                        <div>
+                            <strong>Fran Tarkenton</strong>
+                            <ul>
+                                <li>Position: Quarterback</li>
+                                <li>Years Played: 1961–1966, 1972–1978</li>
+                                <li>Career Passing Yards: 47,003</li>
+                                <li>Touchdowns: 342</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="player-info">
+                        <img src="assets/img/randymoss.jpg" alt="Randy Moss">
+                        <div>
+                            <strong>Randy Moss</strong>
+                            <ul>
+                                <li>Position: Wide Receiver</li>
+                                <li>Years Played: 1998–2004, 2010</li>
+                                <li>Career Receiving Yards: 15,292</li>
+                                <li>Touchdowns: 156</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="player-info">
+                        <img src="assets/img/adrianpeterson.jpg" alt="Adrian Peterson">
+                        <div>
+                            <strong>Adrian Peterson</strong>
+                            <ul>
+                                <li>Position: Running Back</li>
+                                <li>Years Played: 2007–2016</li>
+                                <li>Career Rushing Yards: 14,918</li>
+                                <li>Touchdowns: 120</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="player-info">
+                        <img src="assets/img/alanpage.jpg" alt="Alan Page">
+                        <div>
+                            <strong>Alan Page</strong>
+                            <ul>
+                                <li>Position: Defensive Tackle</li>
+                                <li>Years Played: 1967–1978</li>
+                                <li>Pro Bowl Selections: 9</li>
+                                <li>Awarded NFL MVP: 1971</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Video Section -->
+        <div class="video-section">
+            <h2>Pregame Vikings Video</h2>
+            <iframe 
+                width="100%" 
+                height="315" 
+                src="https://www.youtube.com/embed/ZXsQAXx_ao0" 
+                title="Motivational Video" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <div class='tableauPlaceholder' id='viz1734033248073' style='position: relative'><noscript><a href='#'><img alt='NFL Team Comparison Dashboard ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;NF&#47;NFLTeamComparisonDashboard&#47;NFLTeamComparisonDashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='NFLTeamComparisonDashboard&#47;NFLTeamComparisonDashboard' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;NF&#47;NFLTeamComparisonDashboard&#47;NFLTeamComparisonDashboard&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1734033248073');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1367px';vizElement.style.height='795px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1367px';vizElement.style.height='795px';} else { vizElement.style.width='100%';vizElement.style.height='6277px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+    <!-- Footer Section -->
+    <div class="content">
+        <a href="#">Back to Top</a>
+    </div>
+</body>
+</html>
